@@ -61,7 +61,7 @@ keep two cards
 calculate the score of two cards and if the are busted
 
 Algorithm
-// create a deck of 52 cards
+// \*create a deck of 52 cards
 // Display greeting "Hi my name is {dealer name} Are you ready to play some Black Jack? Hit enter to start"
 // Deal player two face up cards and display two cards for dealer one face up and one as ?
 // on players turn player can choose to HIT or stand

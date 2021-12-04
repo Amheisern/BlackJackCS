@@ -171,12 +171,14 @@ namespace Blackjack
             playerhand.CurrentCards.Add(deck.Cards[0]);
             playerhand.CurrentCards.Add(deck.Cards[1]);
             // Stand
-            // done --> look at dealer's hand
+            // done --> look at dealerHand's hand
             Console.WriteLine(playerhand.HandValue());
             // Console.WriteLine("------------------------");
             // Console.WriteLine(playerhand[0].Value() + playerhand[1].Value());
-
-
+            var dealerHand = new Hand();
+            dealerHand.CurrentCards.Add(deck.Cards[3]);
+            dealerHand.CurrentCards.Add(deck.Cards[2]);
+            Console.WriteLine(dealerHand.HandValue());
             // Hit
             // playerhand.Add(deck.Cards[2]);
 
