@@ -5,84 +5,8 @@ namespace Blackjack
 {
     class Program
     {
-        // # Data Structure
-
-        // The following Nouns exist in the description of the "P"roblem:
-
-        // - Deck
-        // - Card
-        // - Hand
-        // - Player
-        // - Dealer
-
-        // These have the following STATE (properties) and BEHAVIOR (methods)
-
-
-
-        // - Card
-
-        //   - Properties: The Face of the card, the Suit of the card
-        //   - Behaviors:
-        //     - The Value of the card according to the table in the "P"roblem part
-
-        // - Hand
-
-        //   - Properties: A list of individual Cards
-        //   - Behaviors:
-        //     - TotalValue representing he sum of the individual Cards in the list.
-        //       - Start with a total = 0
-        //       - For each card in the hand do this:
-        //         - Add the amount of that card's value to total
-        //       - return "total" as the result
-        //     - Add a card to the hand
-        //       - Adds the supplied card to the list of cards
-
-        // - Player is just an instance of the Hand class
-        // - Dealer is just an instance of the Hand class
-        // 1.  Create a new deck
-        //     PEDAC ^^^^ - Properties: A list of 52 cards
-        //     Algorithm for making a list of 52 cards
-
-        //         Make a blank list of cards
-        //         Suits is a list of "Club", "Diamond", "Heart", or "Spade"
-        //         Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
-        //         ```
-        //         Go through all of the suits one at a time and in order
-        //         {
-        //             Get the current suit
-        //             Go through all of the faces one a time and in order
-        //             {
-        //                 Get the current face
-
-        //                 With the current suit and the current face, make a new card
-        //                 Add that card to the list of cards
-        //             Go to the card and loop again
-        //             }
-        //         Go to the next suit and loop again
-        //         }
-        //         ```
-
-        // 2.  Ask the deck to make a new shuffled 52 cards
-        // 3.  Create a player hand
-        // 4.  Create a dealer hand
-        // 5.  Ask the deck for a card and place it in the player hand
-        // 6.  Ask the deck for a card and place it in the player hand
-        // 7.  Ask the deck for a card and place it in the dealer hand
-        // 8.  Ask the deck for a card and place it in the dealer hand
-        // 9.  Show the player the cards in their hand and the TotalValue of their Hand
-        // 10. If they have BUSTED (hand TotalValue is > 21), then goto step 15
-        // 11. Ask the player if they want to HIT or STAND
-        // 12. If HIT
-        //     - Ask the deck for a card and place it in the player hand, repeat step 10
-        // 13. If STAND then continue on
-        // 14. If the dealer's hand TotalValue is more than 21 then goto step 17
-        // 15. If the dealer's hand TotalValue is less than 17
-        //     - Add a card to the dealer hand and go back to 14
-        // 16. Show the dealer's hand TotalValue
-        // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
-        // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
-        // 19. If the dealer's hand TotalValue is more than the player's hand TotalValue then show "DEALER WINS", else show "PLAYER WINS"
-        // 20. If the value of the hands are even, show "DEALER WINS"
+        // Card
+        // Class for the cards, and also establishes value for the cards 
         public class Card
         {
             public string Suit { get; set; }
@@ -145,7 +69,6 @@ namespace Blackjack
         }
 
         // - Deck
-
         class Deck
         {
             //   - Properties: A list of 52 cards
@@ -154,13 +77,14 @@ namespace Blackjack
             public Deck()
             {
                 //   - Behavior: Make a new deck of 52 shuffled cards. Deal one card out of the deck.
+                // CreateDeck is a conditional method
+                // Shuffle is a method to shuffle the created deck using fisher yates
                 CreateDeck();
                 Shuffle();
             }
 
             public void CreateDeck()
             {
-                // Algorithm B
                 // - Make a new list of the fours suits
                 var suits = new List<string>() { "clubs", "diamonds", "hearts", "spades" };
                 // - Make of a list of 13 ranks and call this list ranks
@@ -183,11 +107,11 @@ namespace Blackjack
                     }
 
                 }
-                // Console.WriteLine(Cards);
+
             }
             public void Shuffle()
             {
-
+                // Fisher Yates shuffle imported from previous assignment
                 var numberOfCards = Cards.Count;
                 for (var rightIndex = numberOfCards - 1; rightIndex >= 1; rightIndex--)
                 {
@@ -229,12 +153,11 @@ namespace Blackjack
                 return sum;
             }
         }
-        //       - return "total" as the result
-        //     - Add a card to the hand
-        //       - Adds the supplied card to the list of cards
+
 
         static void Main(string[] args)
         {
+            // creates a new deck to start the game
             var deck = new Deck();
             // foreach (var card in deck.Cards)
             // {
@@ -242,20 +165,19 @@ namespace Blackjack
 
             // }
 
-            var myHand = new Hand();
-
+            var playerhand = new Hand();
             // Initial Hand
-            myHand.CurrentCards.Add(deck.Cards[0]);
-            myHand.CurrentCards.Add(deck.Cards[1]);
+            playerhand.CurrentCards.Add(deck.Cards[0]);
+            playerhand.CurrentCards.Add(deck.Cards[1]);
             // Stand
             // done --> look at dealer's hand
-            Console.WriteLine(myHand.HandValue());
+            Console.WriteLine(playerhand.HandValue());
             // Console.WriteLine("------------------------");
-            // Console.WriteLine(myHand[0].Value() + myHand[1].Value());
+            // Console.WriteLine(playerhand[0].Value() + playerhand[1].Value());
 
 
             // Hit
-            // myHand.Add(deck.Cards[2]);
+            // playerhand.Add(deck.Cards[2]);
 
         }
 
