@@ -139,6 +139,12 @@ namespace Blackjack
             public List<Card> CurrentCards { get; set; } = new List<Card>();
             //   - Behaviors:
             //     - TotalValue representing he sum of the individual Cards in the list.
+            public void AddCard(Card cardToAdd)
+            {
+                var index = 0;
+                var next = CurrentCards[index + 1];
+                CurrentCards.Add(Deck[next]);
+            }
             public int HandValue()
             {
                 //       - Start with a total = 0
@@ -169,7 +175,9 @@ namespace Blackjack
             var playerhand = new Hand();
             // Initial Hand
             playerhand.CurrentCards.Add(deck.Cards[0]);
+            // playerhand.CurrentCards.Remove(deck.Cards[0]);
             playerhand.CurrentCards.Add(deck.Cards[1]);
+            // playerhand.CurrentCards.Remove(deck.Cards[1]);
             // Stand
             // done --> look at dealerHand's hand
             Console.WriteLine(playerhand.HandValue());
