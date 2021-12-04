@@ -114,7 +114,8 @@ Code
         // - Dealer is just an instance of the Hand class
         // 1.  Create a new deck
         //     PEDAC ^^^^ - Properties: A list of 52 cards
-        //     Algorithm for making a list of 52 cards
+
+// Algorithm for making a list of 52 cards
 
         //         Make a blank list of cards
         //         Suits is a list of "Club", "Diamond", "Heart", or "Spade"
@@ -156,68 +157,5 @@ Code
         // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
         // 19. If the dealer's hand TotalValue is more than the player's hand TotalValue then show "DEALER WINS", else show "PLAYER WINS"
         // 20. If the value of the hands are even, show "DEALER WINS"
-
-Algorithm
-
-    Create a new deck PEDAC ^^^^ - Properties: A list of 52 cards Algorithm for making a list of 52 cards
-
-    Make a blank list of cards
-    Suits is a list of "Club", "Diamond", "Heart", or "Spade"
-    Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
-    ```
-    Go through all of the suits one at a time and in order
-    {
-        Get the current suit
-        Go through all of the faces one a time and in order
-        {
-            Get the current face
-
-            With the current suit and the current face, make a new card
-            Add that card to the list of cards
-        Go to the card and loop again
-        }
-    Go to the next suit and loop again
-    }
-    ```
-
-    Ask the deck to make a new shuffled 52 cards
-
-    Create a player hand
-
-    Create a dealer hand
-
-    Ask the deck for a card and place it in the player hand
-
-    Ask the deck for a card and place it in the player hand
-
-    Ask the deck for a card and place it in the dealer hand
-
-    Ask the deck for a card and place it in the dealer hand
-
-    Show the player the cards in their hand and the TotalValue of their Hand
-
-    If they have BUSTED (hand TotalValue is > 21), then goto step 15
-
-    Ask the player if they want to HIT or STAND
-
-    If HIT
-        Ask the deck for a card and place it in the player hand, repeat step 10
-
-    If STAND then continue on
-
-    If the dealer's hand TotalValue is more than 21 then goto step 17
-
-    If the dealer's hand TotalValue is less than 17
-        Add a card to the dealer hand and go back to 14
-
-    Show the dealer's hand TotalValue
-
-    If the player's hand TotalValue > 21 show "DEALER WINS"
-
-    If the dealer's hand TotalValue > 21 show "PLAYER WINS"
-
-    If the dealer's hand TotalValue is more than the player's hand TotalValue then show "DEALER WINS", else show "PLAYER WINS"
-
-    If the value of the hands are even, show "DEALER WINS"
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^ instructors ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
