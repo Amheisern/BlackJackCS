@@ -140,6 +140,10 @@ Code
         // 3.  Create a player hand
         // 4.  Create a dealer hand
         // 5.  Ask the deck for a card and place it in the player hand
+            // - the card is equal to the 0th index of the deck list
+            // - Remove the card from the deck list
+            // - Call the "add card" behavior of the hand and pass it this card
+
         // 6.  Ask the deck for a card and place it in the player hand
         // 7.  Ask the deck for a card and place it in the dealer hand
         // 8.  Ask the deck for a card and place it in the dealer hand

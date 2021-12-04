@@ -141,9 +141,9 @@ namespace Blackjack
             //     - TotalValue representing he sum of the individual Cards in the list.
             public void AddCard(Card cardToAdd)
             {
-                var index = 0;
-                var next = CurrentCards[index + 1];
-                CurrentCards.Add(Deck[next]);
+                // var index = 0;
+                // var next = CurrentCards[index + 1];
+                CurrentCards.Add(cardToAdd);
             }
             public int HandValue()
             {
@@ -166,27 +166,45 @@ namespace Blackjack
         {
             // creates a new deck to start the game
             var deck = new Deck();
+            // 3.  Create a player hand
+            var player = new Hand();
+            // 4.  Create a dealer hand
+            var dealer = new Hand();
+            // 5.  Ask the deck for a card and place it in the player hand
+            // - the card is equal to the 0th index of the deck list
+            var firstPlayerCard = deck.Cards[0];
+            // - Remove the card from the deck list
+            deck.Cards.Remove(firstPlayerCard);
+            // - Call the "add card" behavior of the hand and pass it this card
+            player.AddCard(firstPlayerCard);
+            // 6.  Ask the deck for a card and place it in the player hand
+            var secondPlayerCard = deck.Cards[0];
+            deck.Cards.Remove(secondPlayerCard);
+            player.AddCard(secondPlayerCard);
+
+            Console.WriteLine(player.CurrentCards.Count);
+
             // foreach (var card in deck.Cards)
             // {
             //     Console.WriteLine($"{card}: {card.Value()}");
 
             // }
 
-            var playerhand = new Hand();
+
             // Initial Hand
-            playerhand.CurrentCards.Add(deck.Cards[0]);
+            //playerhand.CurrentCards.Add(deck.Cards[0]);
             // playerhand.CurrentCards.Remove(deck.Cards[0]);
-            playerhand.CurrentCards.Add(deck.Cards[1]);
+            // playerhand.CurrentCards.Add(deck.Cards[1]);
             // playerhand.CurrentCards.Remove(deck.Cards[1]);
             // Stand
             // done --> look at dealerHand's hand
-            Console.WriteLine(playerhand.HandValue());
+            //Console.WriteLine(playerhand.HandValue());
             // Console.WriteLine("------------------------");
             // Console.WriteLine(playerhand[0].Value() + playerhand[1].Value());
-            var dealerHand = new Hand();
-            dealerHand.CurrentCards.Add(deck.Cards[3]);
-            dealerHand.CurrentCards.Add(deck.Cards[2]);
-            Console.WriteLine(dealerHand.HandValue());
+
+            // dealerHand.CurrentCards.Add(deck.Cards[3]);
+            // dealerHand.CurrentCards.Add(deck.Cards[2]);
+            // Console.WriteLine(dealerHand.HandValue());
             // Hit
             // playerhand.Add(deck.Cards[2]);
 
