@@ -198,9 +198,9 @@ namespace Blackjack
             //Console.WriteLine(string.Join(", "player.CurrentCards));
             foreach (var card in player.CurrentCards)
             {
-                Console.WriteLine($"{card} has the value of: {HandValue}");
+                Console.WriteLine(card);
             }
-
+            Console.WriteLine($"The total value of your cards is {player.HandValue()}");
             // var secondPlayerCard = deck.Cards[0];
             // deck.Cards.Remove(secondPlayerCard);
             // player.AddCard(secondPlayerCard);
