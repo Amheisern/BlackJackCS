@@ -7,6 +7,7 @@ namespace Blackjack
     {
         // Card
         // Class for the cards, and also establishes value for the cards 
+        //TotalValue representing the sums of the individual cards in 
         public class Card
         {
             public string Suit { get; set; }
@@ -172,17 +173,40 @@ namespace Blackjack
             var dealer = new Hand();
             // 5.  Ask the deck for a card and place it in the player hand
             // - the card is equal to the 0th index of the deck list
-            var firstPlayerCard = deck.Cards[0];
-            // - Remove the card from the deck list
-            deck.Cards.Remove(firstPlayerCard);
-            // - Call the "add card" behavior of the hand and pass it this card
-            player.AddCard(firstPlayerCard);
+            // - loops twice to deal two cards
+            for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
+            {
+                var card = deck.Cards[0];
+                // - Remove the card from the deck list
+                deck.Cards.Remove(card);
+                // - Call the "add card" behavior of the hand and pass it this card
+                player.AddCard(card);
+            }
             // 6.  Ask the deck for a card and place it in the player hand
-            var secondPlayerCard = deck.Cards[0];
-            deck.Cards.Remove(secondPlayerCard);
-            player.AddCard(secondPlayerCard);
+            for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
+            {
+                var card = deck.Cards[0];
+                // - Remove the card from the deck list
+                deck.Cards.Remove(card);
+                // - Call the "add card" behavior of the hand and pass it this card
+                dealer.AddCard(card);
+            }
+            // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+            // - loop through the list of cards in the player hand for every card, print out
+            // to the user the description of the card
+            Console.WriteLine("Player, your cards are:");
+            //Console.WriteLine(string.Join(", "player.CurrentCards));
+            foreach (var card in player.CurrentCards)
+            {
+                Console.WriteLine($"{card} has the value of: {HandValue}");
+            }
+
+            // var secondPlayerCard = deck.Cards[0];
+            // deck.Cards.Remove(secondPlayerCard);
+            // player.AddCard(secondPlayerCard);
 
             Console.WriteLine(player.CurrentCards.Count);
+            Console.WriteLine(dealer.CurrentCards.Count);
 
             // foreach (var card in deck.Cards)
             // {

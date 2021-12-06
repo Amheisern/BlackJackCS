@@ -148,6 +148,8 @@ Code
         // 7.  Ask the deck for a card and place it in the dealer hand
         // 8.  Ask the deck for a card and place it in the dealer hand
         // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+            // - loop through the list of cards in the player hand for every card, print out
+            // to the user the description of the card
         // 10. If they have BUSTED (hand TotalValue is > 21), then goto step 15
         // 11. Ask the player if they want to HIT or STAND
         // 12. If HIT
