@@ -159,7 +159,19 @@ namespace Blackjack
 
                 return sum;
             }
+            public void PrintCardsandTotal(string handName)
+            {
+                Console.WriteLine($"{handName}, your cards are:");
+                //Console.WriteLine(string.Join(", "player.CurrentCards));
+                foreach (var card in CurrentCards)
+                {
+                    Console.WriteLine("-------------");
+                    Console.WriteLine(card);
+                    Console.WriteLine("-------------");
+                }
+                Console.WriteLine($"The total value of the cards are {HandValue()}");
 
+            }
         }
 
         //^^^^^^^^^^^^^^^^^^^^^^ CLASSES ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -203,17 +215,10 @@ namespace Blackjack
             var answer = "";
             while (player.HandValue() <= 21 && (answer != "STAND"))
             {
-
-                Console.WriteLine("Player, your cards are:");
-                //Console.WriteLine(string.Join(", "player.CurrentCards));
-                foreach (var card in player.CurrentCards)
-                {
-                    Console.WriteLine("-------------");
-                    Console.WriteLine(card);
-                    Console.WriteLine("-------------");
-                }
-                Console.WriteLine($"The total value of your cards is {player.HandValue()}");
-
+                // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+                // - loop through the list of cards in the player hand for every card, print out
+                // to the user the description of the card
+                player.PrintCardsandTotal("player");
                 // 11. Ask the player if they want to HIT or STAND
                 Console.WriteLine("Would you like to HIT or STAND");
                 answer = Console.ReadLine().ToUpper();
@@ -231,14 +236,20 @@ namespace Blackjack
                 //     - Ask the deck for a card and place it in the player hand, repeat step 10
                 // 13. If STAND then continue on
             }
-            Console.WriteLine(player.CurrentCards.Count);
-            Console.WriteLine(dealer.CurrentCards.Count);
+            player.PrintCardsandTotal("player");
+            //14. If the dealer's hand TotalValue is more than 21 then goto step 17
+            //15. If the dealer's hand TotalValue is less than 17
+            while (player.HandValue() <= 21 && dealer.HandValue() <= 17)
+            {
+                var card = deck.Cards[0];
+                deck.Cards.Remove(card);
+                dealer.AddCard(card);
+            }
+            dealer.PrintCardsandTotal("Dealer");
 
-            // foreach (var card in deck.Cards)
-            // {
-            //     Console.WriteLine($"{card}: {card.Value()}");
-
-            // }
+            // - Add a card to the dealer hand and go back to 14
+            // Console.WriteLine(player.CurrentCards.Count);
+            // Console.WriteLine(dealer.CurrentCards.Count);
 
 
             // Initial Hand
