@@ -242,8 +242,7 @@ namespace Blackjack
             //     - TotalValue representing he sum of the individual Cards in the list.
             public void AddCard(Card cardToAdd)
             {
-                // var index = 0;
-                // var next = CurrentCards[index + 1];
+
                 CurrentCards.Add(cardToAdd);
             }
             public int HandValue()
@@ -288,7 +287,7 @@ namespace Blackjack
                     Console.WriteLine("Thanks for playing");
                     break;
                 }
-                else
+
             }
         }
 
