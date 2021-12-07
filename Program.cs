@@ -246,7 +246,34 @@ namespace Blackjack
                 dealer.AddCard(card);
             }
             dealer.PrintCardsandTotal("Dealer");
-
+            // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
+            if (player.HandValue() > 21)
+            {
+                Console.WriteLine("Dealer Wins");
+            }
+            // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
+            else
+            if (dealer.HandValue() > 21)
+            {
+                Console.WriteLine("Player Wins");
+            }
+            // 19. If the dealer's hand TotalValue is more than the player's
+            // hand TotalValue then show "DEALER WINS", else show "PLAYER WINS"
+            else
+            if (player.HandValue() > dealer.HandValue())
+            {
+                Console.WriteLine("Player Wins");
+            }
+            else
+            if (player.HandValue() < dealer.HandValue())
+            {
+                Console.WriteLine("dealer Wins");
+            }
+            // 20. If the value of the hands are even, show "DEALER WINS"
+            else
+            {
+                Console.WriteLine("Dealer Wins");
+            }
             // - Add a card to the dealer hand and go back to 14
             // Console.WriteLine(player.CurrentCards.Count);
             // Console.WriteLine(dealer.CurrentCards.Count);
