@@ -5,6 +5,106 @@ namespace Blackjack
 {
     class Program
     {
+        static void PlayTheGame()
+        {
+            // creates a new deck to start the game
+            var deck = new Deck();
+            // 3.  Create a player hand
+            var player = new Hand();
+            // 4.  Create a dealer hand
+            var dealer = new Hand();
+            // 5.  Ask the deck for a card and place it in the player hand
+            // - the card is equal to the 0th index of the deck list
+            // - loops twice to deal two cards
+            for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
+            {
+                var card = deck.Cards[0];
+                // - Remove the card from the deck list
+                deck.Cards.Remove(card);
+                // - Call the "add card" behavior of the hand and pass it this card
+                player.AddCard(card);
+            }
+            // 6.  Ask the deck for a card and place it in the player hand
+            for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
+            {
+                var card = deck.Cards[0];
+                // - Remove the card from the deck list
+                deck.Cards.Remove(card);
+                // - Call the "add card" behavior of the hand and pass it this card
+                dealer.AddCard(card);
+            }
+            // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+            // - loop through the list of cards in the player hand for every card, print out
+            // to the user the description of the card
+
+            // var secondPlayerCard = deck.Cards[0];
+            // deck.Cards.Remove(secondPlayerCard);
+            // player.AddCard(secondPlayerCard);
+            //10. If they have BUSTED (hand TotalValue is > 21)
+            var answer = "";
+            while (player.HandValue() <= 21 && (answer != "STAND"))
+            {
+                // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+                // - loop through the list of cards in the player hand for every card, print out
+                // to the user the description of the card
+                player.PrintCardsandTotal("player");
+                // 11. Ask the player if they want to HIT or STAND
+                Console.WriteLine("Would you like to HIT or STAND");
+                answer = Console.ReadLine().ToUpper();
+                // 12. If HIT
+                if (answer == "HIT")
+                {
+                    //     - Ask the deck for a card and place it in the player hand, repeat step 10
+                    var card = deck.Cards[0];
+                    // - Remove the card from the deck list
+                    deck.Cards.Remove(card);
+                    // - Call the "add card" behavior of the hand and pass it this card
+                    player.AddCard(card);
+                }
+
+                //     - Ask the deck for a card and place it in the player hand, repeat step 10
+                // 13. If STAND then continue on
+            }
+            player.PrintCardsandTotal("player");
+            //14. If the dealer's hand TotalValue is more than 21 then goto step 17
+            //15. If the dealer's hand TotalValue is less than 17
+            while (player.HandValue() <= 21 && dealer.HandValue() <= 17)
+            {
+                var card = deck.Cards[0];
+                deck.Cards.Remove(card);
+                dealer.AddCard(card);
+            }
+            dealer.PrintCardsandTotal("Dealer");
+            // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
+            if (player.HandValue() > 21)
+            {
+                Console.WriteLine("Dealer Wins");
+            }
+            // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
+            else
+            if (dealer.HandValue() > 21)
+            {
+                Console.WriteLine("Player Wins");
+            }
+            // 19. If the dealer's hand TotalValue is more than the player's
+            // hand TotalValue then show "DEALER WINS", else show "PLAYER WINS"
+            else
+            if (player.HandValue() > dealer.HandValue())
+            {
+                Console.WriteLine("Player Wins");
+            }
+            else
+            if (player.HandValue() < dealer.HandValue())
+            {
+                Console.WriteLine("dealer Wins");
+            }
+            // 20. If the value of the hands are even, show "DEALER WINS"
+            else
+            {
+                Console.WriteLine("Dealer Wins");
+            }
+
+        }
         // Card
         // Class for the cards, and also establishes value for the cards 
         //TotalValue representing the sums of the individual cards in 
@@ -178,125 +278,21 @@ namespace Blackjack
 
         static void Main(string[] args)
         {
-            // creates a new deck to start the game
-            var deck = new Deck();
-            // 3.  Create a player hand
-            var player = new Hand();
-            // 4.  Create a dealer hand
-            var dealer = new Hand();
-            // 5.  Ask the deck for a card and place it in the player hand
-            // - the card is equal to the 0th index of the deck list
-            // - loops twice to deal two cards
-            for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
+            while (true)
             {
-                var card = deck.Cards[0];
-                // - Remove the card from the deck list
-                deck.Cards.Remove(card);
-                // - Call the "add card" behavior of the hand and pass it this card
-                player.AddCard(card);
-            }
-            // 6.  Ask the deck for a card and place it in the player hand
-            for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
-            {
-                var card = deck.Cards[0];
-                // - Remove the card from the deck list
-                deck.Cards.Remove(card);
-                // - Call the "add card" behavior of the hand and pass it this card
-                dealer.AddCard(card);
-            }
-            // 9.  Show the player the cards in their hand and the TotalValue of their Hand
-            // - loop through the list of cards in the player hand for every card, print out
-            // to the user the description of the card
-
-            // var secondPlayerCard = deck.Cards[0];
-            // deck.Cards.Remove(secondPlayerCard);
-            // player.AddCard(secondPlayerCard);
-            //10. If they have BUSTED (hand TotalValue is > 21)
-            var answer = "";
-            while (player.HandValue() <= 21 && (answer != "STAND"))
-            {
-                // 9.  Show the player the cards in their hand and the TotalValue of their Hand
-                // - loop through the list of cards in the player hand for every card, print out
-                // to the user the description of the card
-                player.PrintCardsandTotal("player");
-                // 11. Ask the player if they want to HIT or STAND
-                Console.WriteLine("Would you like to HIT or STAND");
-                answer = Console.ReadLine().ToUpper();
-                // 12. If HIT
-                if (answer == "HIT")
+                PlayTheGame();
+                Console.WriteLine("would you like to play again. If yes then type YES! If no then type NO");
+                var answer = Console.ReadLine().ToUpper();
+                if (answer == "NO")
                 {
-                    //     - Ask the deck for a card and place it in the player hand, repeat step 10
-                    var card = deck.Cards[0];
-                    // - Remove the card from the deck list
-                    deck.Cards.Remove(card);
-                    // - Call the "add card" behavior of the hand and pass it this card
-                    player.AddCard(card);
+                    Console.WriteLine("Thanks for playing");
+                    break;
                 }
-
-                //     - Ask the deck for a card and place it in the player hand, repeat step 10
-                // 13. If STAND then continue on
+                else
             }
-            player.PrintCardsandTotal("player");
-            //14. If the dealer's hand TotalValue is more than 21 then goto step 17
-            //15. If the dealer's hand TotalValue is less than 17
-            while (player.HandValue() <= 21 && dealer.HandValue() <= 17)
-            {
-                var card = deck.Cards[0];
-                deck.Cards.Remove(card);
-                dealer.AddCard(card);
-            }
-            dealer.PrintCardsandTotal("Dealer");
-            // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
-            if (player.HandValue() > 21)
-            {
-                Console.WriteLine("Dealer Wins");
-            }
-            // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
-            else
-            if (dealer.HandValue() > 21)
-            {
-                Console.WriteLine("Player Wins");
-            }
-            // 19. If the dealer's hand TotalValue is more than the player's
-            // hand TotalValue then show "DEALER WINS", else show "PLAYER WINS"
-            else
-            if (player.HandValue() > dealer.HandValue())
-            {
-                Console.WriteLine("Player Wins");
-            }
-            else
-            if (player.HandValue() < dealer.HandValue())
-            {
-                Console.WriteLine("dealer Wins");
-            }
-            // 20. If the value of the hands are even, show "DEALER WINS"
-            else
-            {
-                Console.WriteLine("Dealer Wins");
-            }
-            // - Add a card to the dealer hand and go back to 14
-            // Console.WriteLine(player.CurrentCards.Count);
-            // Console.WriteLine(dealer.CurrentCards.Count);
-
-
-            // Initial Hand
-            //playerhand.CurrentCards.Add(deck.Cards[0]);
-            // playerhand.CurrentCards.Remove(deck.Cards[0]);
-            // playerhand.CurrentCards.Add(deck.Cards[1]);
-            // playerhand.CurrentCards.Remove(deck.Cards[1]);
-            // Stand
-            // done --> look at dealerHand's hand
-            //Console.WriteLine(playerhand.HandValue());
-            // Console.WriteLine("------------------------");
-            // Console.WriteLine(playerhand[0].Value() + playerhand[1].Value());
-
-            // dealerHand.CurrentCards.Add(deck.Cards[3]);
-            // dealerHand.CurrentCards.Add(deck.Cards[2]);
-            // Console.WriteLine(dealerHand.HandValue());
-            // Hit
-            // playerhand.Add(deck.Cards[2]);
-
         }
+
+
 
     }
 
