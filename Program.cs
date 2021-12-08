@@ -60,6 +60,7 @@ namespace Blackjack
                     deck.Cards.Remove(card);
                     // - Call the "add card" behavior of the hand and pass it this card
                     player.AddCard(card);
+                    //  player.DealCard(card);
                 }
 
                 //     - Ask the deck for a card and place it in the player hand, repeat step 10
@@ -271,6 +272,15 @@ namespace Blackjack
                 Console.WriteLine($"The total value of the cards are {HandValue()}");
 
             }
+            // public void DealCard(Card card)
+            // {
+            //     // var card = deck.Cards[0];
+            //     // - Remove the card from the deck list
+            //      Cards.Remove(card);
+            //     // - Call the "add card" behavior of the hand and pass it this card
+            //     AddCard(card);
+            //     Console.WriteLine(card);
+            // }
         }
 
         //^^^^^^^^^^^^^^^^^^^^^^ CLASSES ^^^^^^^^^^^^^^^^^^^^^^^^^^^
