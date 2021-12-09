@@ -18,20 +18,12 @@ namespace Blackjack
             // - loops twice to deal two cards
             for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
             {
-                var card = deck.Cards[0];
-                // - Remove the card from the deck list
-                deck.Cards.Remove(card);
-                // - Call the "add card" behavior of the hand and pass it this card
-                player.AddCard(card);
+                deck.DealCard(player);
             }
             // 6.  Ask the deck for a card and place it in the player hand
             for (var numberOfCardsToDeal = 0; numberOfCardsToDeal < 2; numberOfCardsToDeal++)
             {
-                var card = deck.Cards[0];
-                // - Remove the card from the deck list
-                deck.Cards.Remove(card);
-                // - Call the "add card" behavior of the hand and pass it this card
-                dealer.AddCard(card);
+                deck.DealCard(dealer);
             }
             // 9.  Show the player the cards in their hand and the TotalValue of their Hand
             // - loop through the list of cards in the player hand for every card, print out
@@ -54,13 +46,14 @@ namespace Blackjack
                 // 12. If HIT
                 if (answer == "HIT")
                 {
-                    //     - Ask the deck for a card and place it in the player hand, repeat step 10
-                    var card = deck.Cards[0];
-                    // - Remove the card from the deck list
-                    deck.Cards.Remove(card);
-                    // - Call the "add card" behavior of the hand and pass it this card
-                    player.AddCard(card);
-                    //  player.DealCard(card);
+                    deck.DealCard(player);
+                    // //     - Ask the deck for a card and place it in the player hand, repeat step 10
+                    // var card = deck.Cards[0];
+                    // // - Remove the card from the deck list
+                    // deck.Cards.Remove(card);
+                    // // - Call the "add card" behavior of the hand and pass it this card
+                    // player.AddCard(card);
+                    // //  player.DealCard(card);
                 }
 
                 //     - Ask the deck for a card and place it in the player hand, repeat step 10
@@ -71,9 +64,11 @@ namespace Blackjack
             //15. If the dealer's hand TotalValue is less than 17
             while (player.HandValue() <= 21 && dealer.HandValue() <= 17)
             {
-                var card = deck.Cards[0];
-                deck.Cards.Remove(card);
-                dealer.AddCard(card);
+
+                deck.DealCard(dealer);
+                // var card = deck.Cards[0];
+                // deck.Cards.Remove(card);
+                // dealer.AddCard(card);
             }
             dealer.PrintCardsandTotal("Dealer");
             // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
@@ -185,6 +180,16 @@ namespace Blackjack
                 Shuffle();
             }
 
+            public void DealCard(Hand hand)
+            {
+                var card = Cards[0];
+                // - Remove the card from the deck list
+                Cards.Remove(card);
+                // - Call the "add card" behavior of the hand and pass it this card
+                hand.AddCard(card);
+                Console.WriteLine(card);
+            }
+
             public void CreateDeck()
             {
                 // - Make a new list of the fours suits
@@ -272,15 +277,6 @@ namespace Blackjack
                 Console.WriteLine($"The total value of the cards are {HandValue()}");
 
             }
-            // public void DealCard(Card card)
-            // {
-            //     // var card = deck.Cards[0];
-            //     // - Remove the card from the deck list
-            //      Cards.Remove(card);
-            //     // - Call the "add card" behavior of the hand and pass it this card
-            //     AddCard(card);
-            //     Console.WriteLine(card);
-            // }
         }
 
         //^^^^^^^^^^^^^^^^^^^^^^ CLASSES ^^^^^^^^^^^^^^^^^^^^^^^^^^^
