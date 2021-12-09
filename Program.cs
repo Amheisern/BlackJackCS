@@ -178,6 +178,7 @@ namespace Blackjack
                 // Shuffle is a method to shuffle the created deck using fisher yates
                 CreateDeck();
                 Shuffle();
+                // Shuffle();
             }
 
             public void DealCard(Hand hand)
