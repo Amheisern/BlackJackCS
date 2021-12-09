@@ -72,13 +72,13 @@ namespace Blackjack
             }
             dealer.PrintCardsandTotal("Dealer");
             // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
-            if (player.HandValue() > 21)
+            if (player.Busted())
             {
                 Console.WriteLine("Dealer Wins");
             }
             // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
             else
-            if (dealer.HandValue() > 21)
+            if (dealer.Busted())
             {
                 Console.WriteLine("Player Wins");
             }
@@ -178,7 +178,7 @@ namespace Blackjack
                 // Shuffle is a method to shuffle the created deck using fisher yates
                 CreateDeck();
                 Shuffle();
-                // Shuffle();
+                Shuffle();
             }
 
             public void DealCard(Hand hand)
@@ -278,6 +278,19 @@ namespace Blackjack
                 Console.WriteLine($"The total value of the cards are {HandValue()}");
 
             }
+            public Boolean Busted()
+            {
+                return HandValue() > 21;
+                // if (HandValue() > 21)
+                // {
+                //     return true;
+                // }
+                // else
+                // {
+                //     return false;
+                // }
+            }
+
         }
 
         //^^^^^^^^^^^^^^^^^^^^^^ CLASSES ^^^^^^^^^^^^^^^^^^^^^^^^^^^
