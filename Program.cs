@@ -178,7 +178,7 @@ namespace Blackjack
                 // Shuffle is a method to shuffle the created deck using fisher yates
                 CreateDeck();
                 Shuffle();
-                Shuffle();
+
             }
 
             public void DealCard(Hand hand)
@@ -188,7 +188,7 @@ namespace Blackjack
                 Cards.Remove(card);
                 // - Call the "add card" behavior of the hand and pass it this card
                 hand.AddCard(card);
-                Console.WriteLine(card);
+                // Console.WriteLine(card);
             }
 
             public void CreateDeck()
@@ -258,6 +258,7 @@ namespace Blackjack
                 var sum = 0;
                 //       - For each card in the hand do this:
                 //         - Add the amount of that card's value to total
+
                 foreach (var card in CurrentCards)
                 {
                     sum = sum + card.Value();
