@@ -74,12 +74,14 @@ namespace Blackjack
             // 17. If the player's hand TotalValue > 21 show "DEALER WINS"
             if (player.Busted())
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Dealer Wins");
             }
             // 18. If the dealer's hand TotalValue > 21 show "PLAYER WINS"
             else
             if (dealer.Busted())
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Player Wins");
             }
             // 19. If the dealer's hand TotalValue is more than the player's
@@ -87,16 +89,19 @@ namespace Blackjack
             else
             if (player.HandValue() > dealer.HandValue())
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Player Wins");
             }
             else
             if (player.HandValue() < dealer.HandValue())
             {
-                Console.WriteLine("dealer Wins");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Dealer Wins");
             }
             // 20. If the value of the hands are even, show "DEALER WINS"
             else
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Dealer Wins");
             }
 
@@ -268,14 +273,19 @@ namespace Blackjack
             }
             public void PrintCardsandTotal(string handName)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"{handName}, your cards are:");
                 //Console.WriteLine(string.Join(", "player.CurrentCards));
                 foreach (var card in CurrentCards)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("-------------");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(card);
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("-------------");
                 }
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"The total value of the cards are {HandValue()}");
 
             }
@@ -301,7 +311,8 @@ namespace Blackjack
             while (true)
             {
                 PlayTheGame();
-                Console.WriteLine("would you like to play again. If yes then type YES! If no then type NO");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("would you like to play again? If yes then type YES! If no then type NO");
                 var answer = Console.ReadLine().ToUpper();
                 if (answer == "NO")
                 {
