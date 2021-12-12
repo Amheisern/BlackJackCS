@@ -316,6 +316,7 @@ namespace Blackjack
                 var answer = Console.ReadLine().ToUpper();
                 if (answer == "NO")
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Thanks for playing");
                     break;
                 }
